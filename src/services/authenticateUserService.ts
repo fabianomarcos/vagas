@@ -3,14 +3,15 @@ import axios from "axios";
 import { baseURL } from "../utils/constants";
 import authConfig from '../infra/http/middleware/config';
 import { sign } from 'jsonwebtoken';
+import { IUser } from '../entities/User';
 
 export class AuthenticateUserService {
   constructor() {}
 
-  public async execute({ name }) {
-    const { data } = await axios.get(baseURL)
+  public async execute({ name }): Promise<{user: IUser, token: string}> {
+    const { data } = await axios.get<IUser[]>(baseURL)
     const username = name.toLowerCase()
-    const user = await data.find(user => user.name.toLowerCase() === username);
+    const user = data.find(user => user.name.toLowerCase() === username);
 
     if (!user) {
       throw new AppError('Usuário não existe.', 401);
@@ -18,7 +19,7 @@ export class AuthenticateUserService {
 
     const { secret, expiresIn } = authConfig.jwt;
 
-    const token = sign({}, secret, {
+    const token: string = sign({}, secret, {
       subject: user.id,
       expiresIn,
     });

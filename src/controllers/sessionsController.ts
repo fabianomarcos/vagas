@@ -1,7 +1,8 @@
+import { Request, Response } from 'express';
 import { AuthenticateUserService } from '../services/authenticateUserService';
 
 export default class SessionsController {
-  public async create(request, response) {
+  public async create(request: Request, response: Response) {
     try {
       const authenticateUser = new AuthenticateUserService();
       const { name } = request.body;
