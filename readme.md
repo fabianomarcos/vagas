@@ -37,8 +37,11 @@ Atualiza os dados de um usuário especifico.
 
 Chamar a rota put http://localhost:3333/users?id=id_que_se_encontra_no_arquivo_db.json, com o body abaixo:
 {
-	"name": "Fabiano"
+	"name": "Fabiano",
+ 	"job": Developer Frontend"
 }
+
+Pode-se atualizar somente o nome ou o job, mas sempre é necessário enviar ao menos um dos dois.
 
 ## teste5.js
 Chamar a rota get http://localhost:3333/users/access com o body abaixo:
