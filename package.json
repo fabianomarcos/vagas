@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "json-server --watch src/infra/db.json",
-    "dev": "ts-node-dev --inspect --ignore-watch node_modules src/app.js"
+    "dev": "ts-node-dev --inspect --ignore-watch node_modules src/app.ts"
   },
   "author": "",
   "license": "ISC",
