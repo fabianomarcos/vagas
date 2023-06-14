@@ -1,6 +1,7 @@
 # Comandos
 
-# npm run server 
+# npm i 
+# npm run server
 Utilizei o server.json para simular um banco de dados. Com isso utilizei das requisições dele para o crud, ao invés de utilizar a memória
 # npm run dev
 
