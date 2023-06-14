@@ -8,6 +8,8 @@ Utilizei o server.json para simular um banco de dados. Com isso utilizei das req
 
 ## teste1.js
 
+Todos os itens abaixo são exemplos, mas você pode realizar o teste que entender melhor.
+
 GET em /user 
 
 Chamar no insominia a rota get http://localhost:3333/users
@@ -33,10 +35,15 @@ Não é possivel deletar usuário não existente
 
 Atualiza os dados de um usuário especifico.
 
-## teste5.js
 Chamar a rota put http://localhost:3333/users?id=id_que_se_encontra_no_arquivo_db.json, com o body abaixo:
 {
 	"name": "Fabiano"
+}
+
+## teste5.js
+Chamar a rota get http://localhost:3333/users/access com o body abaixo:
+{
+	"name": "Fabianinho"
 }
 
 Fiquei na dúvida se entendi esse teste corretamente, fiz de um jeito que ele busca todos os usuário com a string enviada no name, exemplo an retornaria Ana, Fabiano, Anbrosio.
