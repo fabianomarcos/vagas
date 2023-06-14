@@ -1,7 +1,7 @@
 import { verify } from 'jsonwebtoken';
 import { AppError } from '../../../errors/AppError';
 
-module.exports = function ensureAuthenticated(
+export function ensureAuthenticated(
   request,
   response,
   next,
