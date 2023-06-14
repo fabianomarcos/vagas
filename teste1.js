@@ -1,24 +1,45 @@
-var data =  require("./fakeData");
+const axios = require('axios');
+const { baseURL } = require('./src/utils/constants');
 
-const getUser = ( req, res, next ) => {
-    
-    var name =  req.query.name;
+const getUsersByName = async( req, res, next ) => {
+    try {
+        const { data } = await axios.get(baseURL)
+        const { name } = req.query;
+        const username = name.toLowerCase()
 
-    for(let i = 0; i < data.length;  i++) {
-        if(i.name == name) {
-            res.send(data[i]);
-        }
+        const userFound = data.filter(user => user.name.toLowerCase().includes(username))
+
+        if(!userFound) return res.status(400).json({ error: 'User not found' })
+
+        res.status(200).json({ users: userFound });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-
 };
 
-const getUsers = ( req, res, next ) => {
-    
-    res.send(data);
-    
+const getUserByName = async( req, res, next ) => {
+    try {
+        const { data } = await axios.get(baseURL)
+        const { name } = req.query;
+        const username = name.toLowerCase()
+
+        const userFound = data.find(user => user.name.toLowerCase() === username)
+
+        if(!userFound) return res.status(400).json({ error: 'No user found' })
+
+        res.status(200).json({ user: userFound });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+const getUsers = async ( req, res, next ) => {
+    const { data } = await axios.get(baseURL)
+    res.status(200).json({ users: data });
 };
 
 module.exports = {
-    getUser,
+    getUserByName,
+    getUsersByName,
     getUsers
 };
