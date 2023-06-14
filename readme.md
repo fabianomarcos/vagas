@@ -1,8 +1,9 @@
-# Este é um teste para desenvolvedores
+# Comandos
 
-# possui 5 testes
+# npm run server 
+# npm run dev
 
-## Introdução
+## Utilização
 
 Este projeto possui um banco de dados fake em fakeData.js com apenas um registro.
 A ideia é melhorar e o CRUD escrito nos 4 arquivos de teste abaixo.
