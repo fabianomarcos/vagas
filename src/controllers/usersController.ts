@@ -3,6 +3,8 @@ import { CreateUserService } from '../services/createUserService';
 import { ListUserByNameService } from '../services/listUserByNameService';
 import { ListUsersByNameService } from '../services/listUsersByNameService';
 import { DeleteUserService } from '../services/deleteUserService';
+import { UpdateUserService } from '../services/updateUserService';
+import { ListUsersCountService } from '../services/listUsersCount';
 
 export default class UsersController {
   public async create(request, response) {
@@ -62,6 +64,29 @@ export default class UsersController {
       const deleteUsers = new DeleteUserService();
       await deleteUsers.execute({ name, id: request.user.id });
       response.status(200).json({ message: "User removed successfully" });
+    } catch (error) {
+      response.status(400).json({ error: error.message });
+    }
+  }
+
+  public async updateUser(request, response) {
+    try {
+      const { id } =  request.query;
+      const { name, job } = request.body;
+      const updateUser = new UpdateUserService();
+      const { user } = await updateUser.execute({ name, id, sub_id: request.user.id, job });
+      response.status(200).json({ user });
+    } catch (error) {
+      response.status(400).json({ error: error.message });
+    }
+
+  }
+  public async listCountUser(request, response) {
+    try {
+      const { name } = request.body;
+      const listCount = new ListUsersCountService();
+      const { message } = await listCount.execute({ name });
+      response.status(200).json({ message });
     } catch (error) {
       response.status(400).json({ error: error.message });
     }

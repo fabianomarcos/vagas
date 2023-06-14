@@ -2,8 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-var teste4 = require("./teste4");
-var teste5 = require("./teste5");
 const { default: SessionsController } = require('./src/controllers/sessionsController');
 const { default: UsersController } = require('./src/controllers/usersController');
 var ensureAuthenticated = require("./src/infra/http/middleware/ensureAuthenticated")
@@ -35,8 +33,8 @@ app.get("/user", usersController.getUserByName);
 app.get("/usersByName", usersController.getUsersByName);
 app.post("/users", usersController.create)
 app.delete("/users", ensureAuthenticated, usersController.deleteUser)
-app.put("/users", ensureAuthenticated, teste4)
-app.get("/users/access", teste5);
+app.put("/users", ensureAuthenticated, usersController.updateUser)
+app.get("/users/access", usersController.listCountUser);
 app.post("/sessions", sessionsController.create);
 
 
