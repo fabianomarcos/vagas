@@ -3,7 +3,6 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var teste1 = require("./teste1");
-var teste2 = require("./teste2");
 var teste3 = require("./teste3");
 var teste4 = require("./teste4");
 var teste5 = require("./teste5");
@@ -33,7 +32,7 @@ app.get('/', function(req, res){
 const sessionsController = new SessionsController();
 const usersController = new UsersController();
 
-app.get("/users", teste1.getUsers);
+app.get("/users", usersController.listAllUsers);
 app.get("/user", teste1.getUserByName);
 app.get("/usersByName", teste1.getUsersByName);
 app.post("/users", usersController.create)
