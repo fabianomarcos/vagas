@@ -8,6 +8,7 @@ var teste3 = require("./teste3");
 var teste4 = require("./teste4");
 var teste5 = require("./teste5");
 const { default: SessionsController } = require('./src/controllers/sessionsController');
+const { default: UsersController } = require('./src/controllers/usersController');
 var ensureAuthenticated = require("./src/infra/http/middleware/ensureAuthenticated")
 
 app.set('view engine', 'jade');
@@ -30,11 +31,12 @@ app.get('/', function(req, res){
 });
 
 const sessionsController = new SessionsController();
+const usersController = new UsersController();
 
 app.get("/users", teste1.getUsers);
 app.get("/user", teste1.getUserByName);
 app.get("/usersByName", teste1.getUsersByName);
-app.post("/users", teste2)
+app.post("/users", usersController.create)
 app.delete("/users", ensureAuthenticated, teste3)
 app.put("/users", ensureAuthenticated, teste4)
 app.get("/users/access", teste5);
