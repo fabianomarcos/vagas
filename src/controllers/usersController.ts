@@ -60,7 +60,7 @@ export default class UsersController {
     }
   }
 
-  public async deleteUser(request: Request, response: Response) {
+  public async deleteUser(request, response: Response) {
     try {
       const { name } = request.query as UserNameType
       const deleteUsers = new DeleteUserService();
@@ -71,7 +71,7 @@ export default class UsersController {
     }
   }
 
-  public async updateUser(request: Request, response: Response) {
+  public async updateUser(request, response: Response) {
     try {
       const { id } =  request.query as unknown as IUser;
       const { name, job } = request.body as IUserRequest;
