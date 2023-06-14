@@ -34,14 +34,18 @@ Não é possivel deletar usuário não existente
 Atualiza os dados de um usuário especifico.
 
 ## teste5.js
+Chamar a rota put http://localhost:3333/users?id=id_que_se_encontra_no_arquivo_db.json, com o body abaixo:
+{
+	"name": "Fabiano"
+}
 
-Retorne quantas vezes determinado usuário foi lido no teste1.
+Fiquei na dúvida se entendi esse teste corretamente, fiz de um jeito que ele busca todos os usuário com a string enviada no name, exemplo an retornaria Ana, Fabiano, Anbrosio.
 
 ## teste 6
 
 Para logar chamar rota post http://localhost:3333/sessions com o body abaixo:
 {
-	"name": "Fabianov"
+	"name": "Fabiano"
 }
 Não é possivel logar sem estar cadastrado como usuário
 Será retornado um token, que deve ser colado no Auth Bearer token das requisições de put e delete
