@@ -10,7 +10,6 @@ export class ListUsersByNameService {
     const username = name.toLowerCase()
 
     const userFound = data.filter(user => user.name.toLowerCase().includes(username))
-    console.log('userFound: ', userFound);
 
     if(userFound.length === 0) throw new AppError('No user found' ,404)
 
