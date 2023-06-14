@@ -39,5 +39,9 @@ Retorne quantas vezes determinado usuário foi lido no teste1.
 
 ## teste 6
 
-Definina uma forma de criar permissão para o usuario, defina se o usuário pode deletar ou atualizar usuários. Crie um middleware para validar essas permissões e adicione no teste4 e teste3.
-
+Para logar chamar rota post http://localhost:3333/sessions com o body abaixo:
+{
+	"name": "Fabianov"
+}
+Não é possivel logar sem estar cadastrado como usuário
+Será retornado um token, que deve ser colado no Auth Bearer token das requisições de put e delete
