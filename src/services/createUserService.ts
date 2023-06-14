@@ -1,11 +1,12 @@
 import { AppError } from '../errors/AppError';
 import axios from "axios";
 import { baseURL } from "../utils/constants";
+import { IUser, IUserRequest, IUserResponse } from '../entities/User';
 
 export class CreateUserService {
   constructor() {}
 
-  public async execute({ name, job }) {
+  public async execute({ name, job }: IUserRequest): Promise<IUserResponse> {
       if(!name || !job)
         throw new AppError("It is necessary to send the name and the job")
 
@@ -19,6 +20,6 @@ export class CreateUserService {
 
       await axios.post(baseURL, newUser)
 
-      return { newUser }
+      return { user: newUser }
   }
 }

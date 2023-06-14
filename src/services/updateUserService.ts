@@ -1,12 +1,23 @@
 import axios from "axios";
 import { baseURL } from "../utils/constants";
 import { AppError } from "../errors/AppError";
+import { IUser, IUserResponse } from "../entities/User";
 
 export class UpdateUserService {
   constructor() {}
 
-  public async execute({ name, job, id, sub_id }) {
-    const { data } = await axios.get(baseURL)
+  public async execute({
+    name,
+    job,
+    id,
+    sub_id
+  }: {
+    name: string,
+    job: string,
+    id: string,
+    sub_id: string
+  }): Promise<IUserResponse> {
+    const { data } = await axios.get<IUser[]>(baseURL)
 
     const userWithPermission = data.find(user => user.id === sub_id)
     if (!userWithPermission) throw new AppError("Unauthorized", 401)

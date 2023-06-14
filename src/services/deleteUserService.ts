@@ -1,12 +1,13 @@
 import axios from "axios";
 import { baseURL } from "../utils/constants";
 import { AppError } from "../errors/AppError";
+import { IUser } from "../entities/User";
 
 export class DeleteUserService {
   constructor() {}
 
-  public async execute({ name, id }) {
-    const { data } = await axios.get(baseURL)
+  public async execute({ name, id }: { name: string, id: string }): Promise<void> {
+    const { data } = await axios.get<IUser[]>(baseURL)
     const username = name.toLowerCase()
 
     const userWithPermission = data.find(user => user.id === id)
