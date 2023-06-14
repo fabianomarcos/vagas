@@ -59,3 +59,5 @@ Para logar chamar rota post http://localhost:3333/sessions com o body abaixo:
 }
 Não é possivel logar sem estar cadastrado como usuário
 Será retornado um token, que deve ser colado no Auth Bearer token das requisições de put e delete
+
+A branch develop está melhor tipada, não mergeei para evitar erros
