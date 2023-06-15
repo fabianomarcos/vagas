@@ -15,6 +15,12 @@ GET em /user
 
 Chamar no insominia a rota get http://localhost:3333/users
 
+Para consultar um nome específico chamar a rota http://localhost:3333/userbyName?name=fabiano
+Só retorna o usuários idênticos 
+
+Para consultar por qualquer parte do nome e retornar 0 ou vários usuários chamar a rota abaixo
+http://localhost:3333/users/byname?name=bia
+
 ## teste2.js
 
 Chamar no insominia a rota post http://localhost:3333/users com o body abaixo
@@ -47,7 +53,7 @@ Pode-se atualizar somente o nome ou o job, mas sempre é necessário enviar ao m
 ## teste5.js
 Chamar a rota get http://localhost:3333/users/access com o body abaixo:
 {
-	"name": "Fabianinho"
+	"name": "Fabiano"
 }
 
 Fiquei na dúvida se entendi esse teste corretamente, fiz de um jeito que ele busca todos os usuário com a string enviada no name, exemplo an retornaria Ana, Fabiano, Anbrosio.
